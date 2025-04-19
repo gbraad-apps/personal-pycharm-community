@@ -5,7 +5,7 @@ FROM ${BASE_IMAGE}:${BASE_VERSION}
 
 USER root
 
-RUN URL="https://download.jetbrains.com/python/pycharm-community-2025.1.tar.gz" \
+RUN URL="https://download.jetbrains.com/python/pycharm-2025.1.tar.gz" \
     && INSTALL_DIR="/opt/pycharm" \
     && mkdir -p "$INSTALL_DIR" \
     && curl -L "$URL" -o /tmp/pycharm.tar.gz \
