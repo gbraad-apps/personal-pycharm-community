@@ -5,14 +5,17 @@ FROM ${BASE_IMAGE}:${BASE_VERSION}
 
 USER root
 
-RUN dnf install -y \
-	<replace> \
-    && dnf clean all \
-    && rm -rf /var/cache/yum \
+RUN URL="https://download.jetbrains.com/python/pycharm-community-2025.1.tar.gz" \
+    && INSTALL_DIR="/opt/pycharm" \
+    && mkdir -p "$INSTALL_DIR" \
+    && curl -L "$URL" -o /tmp/pycharm.tar.gz \
+    && tar --strip-components=1 -xzf /tmp/pycharm.tar.gz -C "$INSTALL_DIR" \
+    && rm /tmp/pycharm.tar.gz
+
+RUN git config -f /etc/rdesktop/rdesktop.ini \
+	rdesktop.title "PyCharm 2025.1" \
     && git config -f /etc/rdesktop/rdesktop.ini \
-	rdesktop.title "" \
-    && git config -f /etc/rdesktop/rdesktop.ini \
-	rdesktop.exec ""
+	rdesktop.exec "/opt/pycharm/bin/pycharm.sh"
 
 # ensure to become root for systemd
 #ENTRYPOINT ["/sbin/init"]
