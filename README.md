@@ -1,5 +1,5 @@
-Personal PyCharm
-================
+Personal PyCharm (Community)
+============================
 
 > [!NOTE]
 > This image is based on my [gbraad-devenv/fedora](https://github.com/gbraad-devenv/fedora) image, and is therefore personalized;
