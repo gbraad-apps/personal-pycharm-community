@@ -25,4 +25,4 @@ jobs:
       - name: Push image to ghcr.io - (bootc)
         run: |
           podman push --creds=${{ github.actor }}:${{ secrets.GITHUB_TOKEN }} \
-            ghcr.io/gbraad-apps/pycharm-bootc:latest
+            ghcr.io/gbraad-apps/pycharm-community-bootc:latest
